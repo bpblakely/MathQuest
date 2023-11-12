@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+</head>
+<body>
+
+{% for question in questions %}
+    <div class="question-section">
+        <strong>Page:</strong> {{ question.page }}
+        <br>
+        <strong>Section:</strong> {{ question.section }}
+        <br>
+        <strong>Number:</strong> {{ question.number }}
+        <br>
+        <div class="question-content" data-content="{{ question.content }}"></div>
+        <hr>
+    </div>
+{% endfor %}
+
+<script>
+    let script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/npm/mathpix-markdown-it@1.0.40/es5/bundle.js";
+    document.head.append(script);
+
+    script.onload = function() {
+        const isLoaded = window.loadMathJax();
+        if (isLoaded) {
+            console.log('Styles loaded!')
+        }
+
+        const questionEls = document.querySelectorAll('.question-content');
+        questionEls.forEach(el => {
+            const text = el.getAttribute('data-content');
+            const options = { htmlTags: true };
+            const html = window.render(text, options);
+            el.outerHTML = html;
+        });
+    };
+</script>
+
+</body>
+</html>
