@@ -1,3 +1,4 @@
+#%%
 import PyPDF2
 import re
 
@@ -133,7 +134,7 @@ def to_frame(data,start_page):
     df = pd.DataFrame(questions)
     return df
 #%%
-pdf_path = r'G:\2015_Book_LinearAlgebraDoneRight.pdf'
+pdf_path = r'books/2015_Book_LinearAlgebraDoneRight.pdf'
 outlines = list(extract_outline(pdf_path))
 page_list = []
 for index, (item, reader) in enumerate(outlines):
@@ -159,6 +160,7 @@ for index, (item, reader) in enumerate(outlines):
         # Extract text from the range
         print(start_page_num,end_page_num)
         page_list.append([start_page_num,end_page_num])
+        
 #FYI: I manually removed stuff in this list to make it match
 #%%
 

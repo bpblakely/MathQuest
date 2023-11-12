@@ -2,9 +2,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 from sqlalchemy.exc import IntegrityError
-df = pd.read_csv(r'G:\Python File Saves\cheggWebscrapper\temp_questions.csv')
+df = pd.read_csv(r'temp_questions.csv')
 
-app = Flask(__name__, template_folder=r'G:\Python File Saves\cheggWebscrapper\templates')
+app = Flask(__name__, template_folder=r'templates')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///questions.db'
 db = SQLAlchemy(app)
 
